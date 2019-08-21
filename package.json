@@ -1,0 +1,71 @@
+{
+	"name": "vscode-untitled-format",
+	"displayName": "Untitled File Format",
+	"description": "Format XML, Json in Untitled documents.",
+	"version": "0.0.1",
+	"publisher": "chxing",
+	"keywords": [
+		"format",
+		"untitled",
+		"xml",
+		"json"
+	],
+	"engines": {
+		"vscode": "^1.37.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onCommand:vscode-untitled-format.format"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "vscode-untitled-format.format",
+				"title": "Untitled File Format",
+				"enablement": "resourceFilename =~ /Untitled-/"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "vscode-untitled-format.format",
+				"key": "ctrl+shift+alt+L",
+				"when": "editorTextFocus && resourceFilename =~ /Untitled-/"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"group": "1_modification@2",
+					"command": "vscode-untitled-format.format",
+					"when": "editorFocus && resourceFilename =~ /Untitled-/"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/mocha": "^5.2.6",
+		"@types/glob": "^7.1.1",
+		"eslint": "^5.13.0",
+		"mocha": "^6.1.4",
+		"glob": "^7.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.0.2"
+	},
+	"dependencies": {
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.37.0",
+		"fast-xml-parser": "^3.12.20",
+		"validator": "^11.1.0",
+		"vkbeautify": "^0.99.3"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chxing/vscode-untitled-format"
+	}
+}
